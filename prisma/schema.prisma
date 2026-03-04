@@ -1,0 +1,42 @@
+datasource db {
+  provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  nama      String   @unique
+  password  String
+  role      String
+  status    String
+  createdAt DateTime @default(now())
+}
+
+model Siswa {
+  id     String @id @default(uuid())
+  no     Int
+  nama   String
+  kelas  String
+}
+
+model Absensi {
+  id        String   @id @default(uuid())
+  kelas     String
+  mapel     String
+  siswa     String
+  status    String
+  tanggal   DateTime
+  guru      String
+}
+
+model Nilai {
+  id     String @id @default(uuid())
+  siswa  String
+  mapel  String
+  nilai  Int
+  kelas  String
+  guru   String
+}
