@@ -1,10 +1,11 @@
+import path from "path";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  experimental: {
-    appDir: true
-  },
-  distDir: ".next"
+  webpack(config) {
+    config.resolve.alias["@"] = path.join(__dirname, "src");
+    return config;
+  }
 };
 
 export default nextConfig;
